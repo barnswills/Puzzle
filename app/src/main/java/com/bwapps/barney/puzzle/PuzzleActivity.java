@@ -1,19 +1,18 @@
 package com.bwapps.barney.puzzle;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PuzzleActivity extends AppCompatActivity
 {
-    private TextView boxOne, boxTwo, boxThree;
-    private TextView boxFour, boxFive, boxSix;
-    private TextView boxSeven, boxEight, boxNine;
-
     private TextView[] boxes;
 
-    private Button spinButton, insertButton;
+    private Button spinButton;
 
     private int[] colourList;
 
@@ -25,15 +24,15 @@ public class PuzzleActivity extends AppCompatActivity
 
         spinButton = (Button) findViewById(R.id.spin_button);
 
-        boxOne = (TextView) findViewById(R.id.box1);
-        boxTwo = (TextView) findViewById(R.id.box2);
-        boxThree = (TextView) findViewById(R.id.box3);
-        boxFour = (TextView) findViewById(R.id.box4);
-        boxFive = (TextView) findViewById(R.id.box5);
-        boxSix = (TextView) findViewById(R.id.box6);
-        boxSeven = (TextView) findViewById(R.id.box7);
-        boxEight = (TextView) findViewById(R.id.box8);
-        boxNine = (TextView) findViewById(R.id.box9);
+        TextView boxOne = (TextView) findViewById(R.id.box1);
+        TextView boxTwo = (TextView) findViewById(R.id.box2);
+        TextView boxThree = (TextView) findViewById(R.id.box3);
+        TextView boxFour = (TextView) findViewById(R.id.box4);
+        TextView boxFive = (TextView) findViewById(R.id.box5);
+        TextView boxSix = (TextView) findViewById(R.id.box6);
+        TextView boxSeven = (TextView) findViewById(R.id.box7);
+        TextView boxEight = (TextView) findViewById(R.id.box8);
+        TextView boxNine = (TextView) findViewById(R.id.box9);
 
         boxes = new TextView[]{boxOne, boxTwo, boxThree, boxFour,
                 boxFive, boxSix, boxSeven, boxEight, boxNine};
@@ -47,11 +46,54 @@ public class PuzzleActivity extends AppCompatActivity
     {
         super.onResume();
 
-        boxOne.setBackgroundResource(colourList[0]);
-    }
+        for (final TextView box : boxes)
+        {
+            box.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getBaseContext(), String.valueOf(box.getTag()),
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
-    private void callClear()
-    {
+        spinButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                new CountDownTimer(100, 1000)
+                {
+                    int animPlayCount = 0;
 
+                    @Override
+                    public void onTick(long millisUntilFinished) {}
+
+                    @Override
+                    public void onFinish()
+                    {
+                        Board.fillBoard(boxes, colourList);
+                        animPlayCount++;
+
+                        spinButton.setEnabled(false);
+
+                        if (animPlayCount < 10) { start();}
+                        else
+                        {
+                            // final fill
+                            Board.fillBoard(boxes, colourList);
+                            Result.checkResult(boxes);
+
+                            String resultString = Result.getResultString();
+
+                            Toast.makeText(getBaseContext(),
+                                    resultString, Toast.LENGTH_LONG).show();
+
+                            spinButton.setEnabled(true);
+                        }
+                    }
+                }.start();
+            }
+        });
     }
 }
