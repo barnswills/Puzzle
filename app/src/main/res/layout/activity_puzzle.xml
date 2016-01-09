@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.bwapps.barney.puzzle.PuzzleActivity"
+    android:gravity="center">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/gridLayout"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box1"
+            android:layout_gravity="left|top"
+            android:textSize="100dp"
+            android:background="@drawable/white_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box2"
+            android:layout_gravity="center_horizontal|top"
+            android:textSize="100dp"
+            android:background="@drawable/red_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box3"
+            android:layout_gravity="right|top"
+            android:textSize="100dp"
+            android:background="@drawable/red_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box4"
+            android:layout_gravity="left|center_vertical"
+            android:textSize="100dp"
+            android:background="@drawable/red_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box5"
+            android:layout_gravity="center"
+            android:textSize="100dp"
+            android:background="@drawable/blue_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box6"
+            android:layout_gravity="right|center_vertical"
+            android:textSize="100dp"
+            android:background="@drawable/green_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box7"
+            android:layout_gravity="left|bottom"
+            android:textSize="100dp"
+            android:background="@drawable/green_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box8"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textSize="100dp"
+            android:background="@drawable/white_rect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/box9"
+            android:layout_gravity="right|bottom"
+            android:textSize="100dp"
+            android:background="@drawable/blue_rect"
+            android:gravity="center" />
+    </GridLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spin"
+        android:id="@+id/spin_button"
+        android:layout_below="@+id/gridLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
