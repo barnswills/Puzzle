@@ -1,5 +1,6 @@
 package com.bwapps.barney.puzzle;
 
+// handles the list of slot images
 public class Slots
 {
     private static int[] slotImageList = new int[]

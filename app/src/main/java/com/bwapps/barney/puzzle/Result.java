@@ -21,6 +21,7 @@ public class Result
         if (!hasWon) checkRowContents(bottomRow);
     }
 
+    // reads tags from each row and determines if player has won or not
     private static void checkRowContents(ImageView[] row)
     {
         String first = String.valueOf(row[0].getTag());

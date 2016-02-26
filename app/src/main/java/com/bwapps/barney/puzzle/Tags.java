@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 public class Tags
 {
+    // changes tag to the corresponding image name
     public static void determineTags(ImageView[] slots)
     {
         for (ImageView slot : slots)
